@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RNGana</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>RNGana</h1>
+        <div id="rollCounter">Rolls: 0</div>
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- GAME -->
+    <!-- ========================= -->
+
+    <main>
+
+        <section class="game-card">
+
+            <div id="kanaDisplay" class="kana-display">
+                ?
+            </div>
+
+            <div id="kanaName" class="kana-name">
+                Roll to discover!
+            </div>
+
+            <div id="rarityDisplay" class="rarity">
+                ???
+            </div>
+
+            <button id="rollButton">
+                ROLL
+            </button>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- KANADEX -->
+        <!-- ========================= -->
+
+        <section class="kanadex">
+
+            <div class="kanadex-header">
+
+                <button
+                    id="previousPage"
+                    class="page-arrow"
+                >
+                    ←
+                </button>
+
+                <div>
+                    <h2 id="kanadexTitle">
+                        HIRAGANA
+                    </h2>
+
+                    <div
+                        id="kanadexCount"
+                        class="kanadex-count"
+                    >
+                        Characters discovered: 0 / 60
+                    </div>
+
+                    <div
+                        id="completionPercentage"
+                        class="completion"
+                    >
+                        0%
+                    </div>
+                </div>
+
+                <button
+                    id="nextPage"
+                    class="page-arrow"
+                >
+                    →
+                </button>
+
+            </div>
+
+
+            <div
+                id="katakanaLockedMessage"
+                class="katakana-locked-message hidden"
+            >
+                🔒 Collect all 60 Hiragana characters
+                to unlock Katakana!
+            </div>
+
+
+            <div
+                id="collectionGrid"
+                class="collection-grid"
+            ></div>
+
+        </section>
+
+    </main>
+
+<!-- KATAKANA UNLOCK CELEBRATION -->
+<div id="unlockOverlay" class="unlock-overlay">
+    <div class="unlock-content">
+        <div class="unlock-emoji">🎉</div>
+        <div class="unlock-title">KATAKANA UNLOCKED!</div>
+        <div class="unlock-subtitle">
+            You collected all 60 Hiragana!
+        </div>
+    </div>
+
+    <div id="unlockParticles"></div>
+</div>
+
+   
+<button id="settingsButton" class="settings-button">
+    ⚙️ SETTINGS
+</button>
+
+<!-- =========================
+     SETTINGS PANEL
+========================= -->
+
+<div id="settingsPanel" class="settings-panel">
+
+
+    
+    <div class="settings-box">
+
+        <button
+            id="closeSettingsButton"
+            class="settings-close-button"
+        >
+            ✕
+        </button>
+
+        <h2>⚙️ Settings</h2>
+
+        <!-- SFX VOLUME -->
+
+        <div class="settings-section">
+
+            <div class="settings-label-row">
+
+                <span>🔊 SFX Volume</span>
+
+                <span id="sfxVolumeValue">
+                    100%
+                </span>
+
+            </div>
+
+            <input
+                id="sfxVolumeSlider"
+                type="range"
+                min="0"
+                max="100"
+                value="100"
+            >
+
+        </div>
+
+<div class="settings-section">
+
+    <div class="settings-label-row">
+
+        <span>🎵 Music Volume</span>
+
+        <span id="musicVolumeValue">
+            50%
+        </span>
+
+    </div>
+
+    <input
+        id="musicVolumeSlider"
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+    >
+
+</div>
+
+<div class="settings-section">
+
+    <div class="settings-label-row">
+
+        <span>✨ Animations</span>
+
+        <span id="animationValue">
+            ON
+        </span>
+
+    </div>
+
+    <button
+        id="animationToggle"
+        class="settings-toggle-button"
+    >
+        ON
+    </button>
+
+</div>
+
+<div class="settings-section">
+    <div class="settings-label-row">
+        <span>Theme</span>
+    </div>
+
+    <div id="themeSelector" class="theme-selector"></div>
+</div>
+
+<div
+    class="admin-theme-control"
+    id="adminThemeControl"
+>
+    <span>Unlock All Themes</span>
+
+    <label class="switch">
+        <input type="checkbox" id="adminUnlockThemes">
+        <span class="slider"></span>
+    </label>
+</div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =============================== -->
+<!-- ADMIN PANEL -->
+<!-- =============================== -->
+
+<button id="adminButton" class="admin-button">
+    🔧 ADMIN
+</button>
+
+
+<div id="adminPanel" class="admin-panel">
+
+    <div class="admin-panel-box">
+
+        <div class="admin-header">
+            <div>
+                <div class="admin-title">
+                    🔧 ADMIN PANEL
+                </div>
+
+                <div class="admin-subtitle">
+                    RNGana developer tools
+                </div>
+            </div>
+
+            <button
+                id="closeAdminButton"
+                class="admin-close"
+            >
+                ×
+            </button>
+        </div>
+
+
+        <!-- ======================= -->
+        <!-- GET KANA -->
+        <!-- ======================= -->
+
+        <div class="admin-section">
+
+            <div class="admin-section-title">
+                GET KANA
+            </div>
+
+            <div class="admin-description">
+                Instantly add a kana to your collection.
+            </div>
+
+            <div class="admin-row">
+
+                <input
+                    id="adminKanaInput"
+                    class="admin-input"
+                    type="text"
+                    placeholder="Character or name..."
+                    autocomplete="off"
+                >
+
+                <button
+    id="adminGetButton"
+    class="admin-action-button"
+>
+    GET
+</button>
+
+<button
+    id="adminRemoveButton"
+    class="admin-action-button admin-remove-button"
+>
+    REMOVE
+</button>
+
+            </div>
+
+            <div
+                id="adminGetStatus"
+                class="admin-status"
+            ></div>
+
+        </div>
+
+
+        <!-- ======================= -->
+        <!-- PLAY ANIMATION -->
+        <!-- ======================= -->
+
+        <div class="admin-section">
+
+            <div class="admin-section-title">
+                PLAY ANIMATION
+            </div>
+
+            <div class="admin-description">
+                Test an animation without giving yourself a kana.
+            </div>
+
+            <div class="admin-row">
+
+                <select
+                    id="adminAnimationSelect"
+                    class="admin-input"
+                >
+                    <option value="unreal">
+                        UNREAL
+                    </option>
+
+                    <option value="secret">
+                        SECRET
+                    </option>
+
+                    <option value="divine">
+                        DIVINE
+                    </option>
+
+                    <option value="mythic">
+                        MYTHIC
+                    </option>
+
+                    <option value="legendary">
+                        LEGENDARY
+                    </option>
+
+                    <option value="epic">
+                        EPIC
+                    </option>
+
+                    <option value="rare">
+                        RARE
+                    </option>
+
+                    <option value="uncommon">
+                        UNCOMMON
+                    </option>
+
+                    <option value="common">
+                        COMMON
+                    </option>
+                </select>
+
+                <button
+                    id="adminAnimationButton"
+                    class="admin-action-button"
+                >
+                    PLAY
+                </button>
+
+            </div>
+
+            <div
+                id="adminAnimationStatus"
+                class="admin-status"
+            ></div>
+
+        </div>
+
+
+        <!-- ======================= -->
+        <!-- ADMIN INFO -->
+        <!-- ======================= -->
+
+        <div class="admin-footer">
+
+            <span>
+                Logged in as
+            </span>
+
+            <strong>
+                MonsterosityGH
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =============================== -->
+<!-- GITHUB ACCOUNT -->
+<!-- =============================== -->
+
+<div id="githubAccount">
+
+    <a
+        id="githubLoginButton"
+        class="github-login-button"
+        href="/auth/github"
+    >
+        🐙 LOGIN WITH GITHUB
+    </a>
+
+
+    <div
+        id="githubLoggedIn"
+        class="github-logged-in"
+    >
+
+        <img
+            id="githubAvatar"
+            class="github-avatar"
+            src=""
+            alt=""
+        >
+
+        <span id="githubUsername"></span>
+
+        <button
+            id="githubLogoutButton"
+            class="github-logout-button"
+        >
+            LOG OUT
+        </button>
+
+    </div>
+
+</div>
+ <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,3565 @@
+/* =============================== */
+/* GENERAL */
+/* =============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #20204a,
+            #0d0d20 55%,
+            #080812
+        );
+
+    color: white;
+}
+
+
+/* =============================== */
+/* HEADER */
+/* =============================== */
+
+header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 35px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    background:
+        rgba(10,10,25,0.8);
+
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 32px;
+
+    letter-spacing: 3px;
+}
+
+#rollCounter {
+    color: #aaaad0;
+
+    font-size: 16px;
+}
+
+
+/* =============================== */
+/* MAIN */
+/* =============================== */
+
+main {
+    width: min(1100px, 94%);
+
+    margin:
+        40px auto 80px;
+}
+
+
+/* =============================== */
+/* GAME CARD */
+/* =============================== */
+
+.game-card {
+    text-align: center;
+
+    padding: 45px 25px;
+
+    margin-bottom: 45px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(20,20,45,0.85);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35);
+}
+
+
+/* =============================== */
+/* KANA DISPLAY */
+/* =============================== */
+
+.kana-display {
+    min-height: 150px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 100px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+    transition:
+        transform 0.2s,
+        text-shadow 0.2s;
+}
+
+.kana-name {
+    font-size: 22px;
+
+    color: #aaaad0;
+
+    margin-bottom: 12px;
+}
+
+
+/* =============================== */
+/* RARITY */
+/* =============================== */
+
+.rarity {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+}
+
+.rarity.common {
+    color: white;
+}
+
+.rarity.uncommon {
+    color: #55ff77;
+}
+
+.rarity.rare {
+    color: #55aaff;
+}
+
+.rarity.epic {
+    color: #c060ff;
+}
+
+.rarity.legendary {
+    color: #ffd43b;
+}
+
+.rarity.mythic {
+    color: #ff8c32;
+}
+
+.rarity.divine {
+    color: #ff4545;
+}
+
+.rarity.secret {
+    color: #33ffff;
+}
+
+.rarity.unreal {
+    color: white;
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #9f6cff,
+        0 0 50px #6b4cff;
+}
+
+.collection-item.unreal {
+    box-shadow:
+        inset 0 0 40px rgba(150,100,255,0.4),
+        0 0 20px rgba(120,80,255,0.3);
+}
+
+.collection-item.unreal .collection-character {
+    color: white;
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #9f6cff,
+        0 0 45px #6b4cff;
+}
+
+.effect-unreal {
+    animation:
+        revealUnreal 2s ease;
+}
+
+@keyframes revealUnreal {
+
+    0% {
+        transform: scale(0.05);
+        opacity: 0;
+        filter: brightness(0);
+    }
+
+    20% {
+        transform: scale(0.15);
+        opacity: 1;
+        filter: brightness(3);
+    }
+
+    50% {
+        transform: scale(1.5);
+        filter: brightness(5);
+    }
+
+    70% {
+        transform: scale(0.85);
+    }
+
+    85% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* =============================== */
+/* ROLL BUTTON */
+/* =============================== */
+
+#rollButton {
+    border: none;
+
+    padding: 15px 55px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6b4cff,
+            #a94cff
+        );
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        filter 0.15s,
+        box-shadow 0.15s;
+}
+
+#rollButton:hover {
+    transform: scale(1.05);
+
+    filter: brightness(1.15);
+
+    box-shadow:
+        0 0 25px rgba(140,80,255,0.45);
+}
+
+#rollButton:active {
+    transform: scale(0.96);
+}
+
+#rollButton:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.55;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =============================== */
+/* KANADEX */
+/* =============================== */
+
+.kanadex {
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(20,20,45,0.85);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.3);
+}
+
+
+/* =============================== */
+/* KANADEX HEADER */
+/* =============================== */
+
+.kanadex-header {
+    display: grid;
+
+    grid-template-columns: 70px 1fr 70px;
+
+    align-items: center;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.kanadex-header h2 {
+    margin: 0 0 8px;
+
+    font-size: 28px;
+
+    letter-spacing: 4px;
+}
+
+.kanadex-count {
+    color: #aaaad0;
+
+    font-size: 15px;
+}
+
+.completion {
+    margin-top: 5px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #ffffff;
+}
+
+
+/* =============================== */
+/* PAGE ARROWS */
+/* =============================== */
+
+.page-arrow {
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.15s,
+        opacity 0.15s;
+}
+
+.page-arrow:hover:not(:disabled) {
+    transform: scale(1.08);
+
+    background:
+        rgba(130,90,255,0.3);
+}
+
+.page-arrow:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.page-arrow:disabled {
+    opacity: 0.25;
+
+    cursor: not-allowed;
+}
+
+
+/* =============================== */
+/* LOCKED MESSAGE */
+/* =============================== */
+
+.katana-locked-message {
+    text-align: center;
+
+    margin:
+        0 auto 25px;
+
+    padding: 14px 20px;
+
+    max-width: 600px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,180,50,0.08);
+
+    border:
+        1px solid rgba(255,180,50,0.2);
+
+    color: #ffd76a;
+
+    font-size: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =============================== */
+/* COLLECTION GRID */
+/* =============================== */
+
+.collection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(105px, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =============================== */
+/* COLLECTION ITEM */
+/* =============================== */
+
+.collection-item {
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+.collection-item:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255,255,255,0.07);
+}
+
+
+/* =============================== */
+/* CHARACTER */
+/* =============================== */
+
+.collection-character {
+    font-size: 43px;
+
+    font-weight: bold;
+
+    line-height: 1;
+}
+
+
+/* =============================== */
+/* NAME */
+/* =============================== */
+
+.collection-name {
+    font-size: 12px;
+
+    color: #aaaad0;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =============================== */
+/* LOCKED */
+/* =============================== */
+
+.collection-item.locked {
+    background:
+        rgba(0,0,0,0.2);
+
+    border:
+        1px solid rgba(255,255,255,0.04);
+
+    opacity: 0.55;
+}
+
+.collection-item.locked .collection-character {
+    color: #555577;
+
+    text-shadow: none;
+}
+
+.collection-item.locked .collection-name {
+    color: #44445f;
+}
+
+
+/* =============================== */
+/* RARITY BOX EFFECTS */
+/* =============================== */
+
+.collection-item.common {
+    box-shadow:
+        inset 0 0 12px
+        rgba(255,255,255,0.04);
+}
+
+.collection-item.uncommon {
+    box-shadow:
+        inset 0 0 15px
+        rgba(80,255,120,0.12);
+}
+
+.collection-item.rare {
+    box-shadow:
+        inset 0 0 18px
+        rgba(80,150,255,0.18);
+}
+
+.collection-item.epic {
+    box-shadow:
+        inset 0 0 20px
+        rgba(180,80,255,0.2);
+}
+
+.collection-item.legendary {
+    box-shadow:
+        inset 0 0 22px
+        rgba(255,210,50,0.22);
+}
+
+.collection-item.mythic {
+    box-shadow:
+        inset 0 0 25px
+        rgba(255,70,255,0.25);
+}
+
+.collection-item.divine {
+    box-shadow:
+        inset 0 0 28px
+        rgba(255,180,30,0.3);
+}
+
+.collection-item.secret {
+    box-shadow:
+        inset 0 0 35px
+        rgba(0,255,255,0.3);
+}
+
+
+/* =============================== */
+/* RARITY CHARACTER COLORS */
+/* =============================== */
+
+.collection-item.common .collection-character {
+    color: #ffffff;
+}
+
+.collection-item.uncommon .collection-character {
+    color: #55ff77;
+
+    text-shadow:
+        0 0 12px #55ff77;
+}
+
+.collection-item.rare .collection-character {
+    color: #55aaff;
+
+    text-shadow:
+        0 0 15px #55aaff;
+}
+
+.collection-item.epic .collection-character {
+    color: #c060ff;
+
+    text-shadow:
+        0 0 18px #c060ff;
+}
+
+.collection-item.legendary .collection-character {
+    color: #ffd43b;
+
+    text-shadow:
+        0 0 20px #ffd43b;
+}
+
+.collection-item.mythic .collection-character {
+    color: #ff8c32;
+
+    text-shadow:
+        0 0 12px #ff8c32,
+        0 0 25px #ff4cff;
+}
+
+.collection-item.divine .collection-character {
+    color: #ff4545;
+
+    text-shadow:
+        0 0 12px #ff4545,
+        0 0 25px #ff9d00;
+}
+
+.collection-item.secret .collection-character {
+    background:
+        linear-gradient(
+            90deg,
+            #ff3333,
+            #ffcc00,
+            #33ff66,
+            #33ccff,
+            #aa55ff,
+            #ff33cc
+        );
+
+    background-size: 300% 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        secretRainbow 2s linear infinite;
+}
+
+@keyframes secretRainbow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =============================== */
+/* NEW DISCOVERY */
+/* =============================== */
+
+.new-discovery {
+    animation:
+        newDiscovery 1s ease;
+}
+
+@keyframes newDiscovery {
+
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.15);
+
+        box-shadow:
+            0 0 35px
+            rgba(255,255,255,0.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =============================== */
+/* ROLL EFFECTS */
+/* =============================== */
+
+.effect-common {
+    animation:
+        revealCommon 0.5s ease;
+}
+
+.effect-uncommon {
+    animation:
+        revealUncommon 0.6s ease;
+}
+
+.effect-rare {
+    animation:
+        revealRare 0.7s ease;
+}
+
+.effect-epic {
+    animation:
+        revealEpic 0.8s ease;
+}
+
+.effect-legendary {
+    animation:
+        revealLegendary 0.9s ease;
+}
+
+.effect-mythic {
+    animation:
+        revealMythic 1s ease;
+}
+
+.effect-divine {
+    animation:
+        revealDivine 1.1s ease;
+}
+
+.effect-secret {
+    animation:
+        revealSecret 1.3s ease;
+}
+
+@keyframes revealCommon {
+
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes revealUncommon {
+
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes revealRare {
+
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes revealEpic {
+
+    0% {
+        transform: scale(0.5) rotate(-10deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.15) rotate(5deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes revealLegendary {
+
+    0% {
+        transform: scale(0.4);
+        opacity: 0;
+        filter: brightness(2);
+    }
+
+    60% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@keyframes revealMythic {
+
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes revealDivine {
+
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+        filter: brightness(3);
+    }
+
+    50% {
+        transform: scale(1.35);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@keyframes revealSecret {
+
+    0% {
+        transform: scale(0.1) rotate(-20deg);
+        opacity: 0;
+        filter: brightness(4);
+    }
+
+    50% {
+        transform: scale(1.5) rotate(10deg);
+    }
+
+    75% {
+        transform: scale(0.9) rotate(-5deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+
+/* =============================== */
+/* MOBILE */
+/* =============================== */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 18px 20px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    main {
+        width: 94%;
+
+        margin-top: 25px;
+    }
+
+    .game-card {
+        padding: 35px 15px;
+    }
+
+    .kana-display {
+        font-size: 75px;
+    }
+
+    .kanadex {
+        padding: 20px 12px;
+    }
+
+    .kanadex-header {
+        grid-template-columns:
+            50px 1fr 50px;
+    }
+
+    .page-arrow {
+        width: 43px;
+        height: 43px;
+
+        font-size: 24px;
+    }
+
+    .kanadex-header h2 {
+        font-size: 21px;
+    }
+
+    .collection-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 9px;
+    }
+
+    .collection-item {
+        min-height: 90px;
+    }
+
+    .collection-character {
+        font-size: 34px;
+    }
+}
+
+/* =============================== */
+/* KATAKANA UNLOCK CELEBRATION */
+/* =============================== */
+
+.unlock-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(110, 70, 255, 0.92),
+            rgba(10, 10, 30, 0.97)
+        );
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.unlock-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.unlock-content {
+    text-align: center;
+    z-index: 2;
+
+    animation:
+        unlockEntrance 0.9s
+        cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+
+.unlock-emoji {
+    font-size: 90px;
+    margin-bottom: 10px;
+
+    animation:
+        unlockEmoji 1s ease infinite alternate;
+}
+
+.unlock-title {
+    font-size: clamp(35px, 7vw, 75px);
+    font-weight: 900;
+    letter-spacing: 5px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 30px rgba(170,100,255,0.9),
+        0 0 60px rgba(100,50,255,0.8);
+}
+
+.unlock-subtitle {
+    margin-top: 18px;
+
+    font-size: clamp(16px, 3vw, 25px);
+    color: #dcd6ff;
+}
+
+/* Screen flash */
+
+.unlock-overlay.show::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: white;
+
+    opacity: 0;
+
+    animation: unlockFlash 0.7s ease;
+}
+
+/* Particles */
+
+.unlock-particle {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        unlockParticle 2.5s ease-out forwards;
+}
+
+/* Animations */
+
+@keyframes unlockEntrance {
+
+    0% {
+        transform: scale(0.2) rotate(-8deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.15) rotate(3deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes unlockEmoji {
+
+    from {
+        transform: scale(1) rotate(-8deg);
+    }
+
+    to {
+        transform: scale(1.15) rotate(8deg);
+    }
+}
+
+@keyframes unlockFlash {
+
+    0% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes unlockParticle {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(1.5)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+/* =============================== */
+/* ADMIN BUTTON */
+/* =============================== */
+
+.admin-button {
+
+    position: fixed;
+
+    bottom: 20px;
+    right: 20px;
+
+    z-index: 9000;
+
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #171717;
+    color: white;
+
+    font-weight: bold;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+.admin-button:hover {
+
+    transform: translateY(-2px);
+
+    background: #252525;
+}
+
+
+/* =============================== */
+/* ADMIN PANEL */
+/* =============================== */
+
+.admin-panel {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, 0.75);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+.admin-panel.show {
+
+    display: flex;
+
+    animation:
+        adminFadeIn
+        0.2s ease;
+}
+
+
+/* =============================== */
+/* PANEL BOX */
+/* =============================== */
+
+.admin-panel-box {
+
+    width: min(520px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0c0c0c
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.7);
+
+    color: white;
+
+    animation:
+        adminPanelIn
+        0.25s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        );
+}
+
+
+/* =============================== */
+/* HEADER */
+/* =============================== */
+
+.admin-header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 22px 24px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+}
+
+
+.admin-title {
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.admin-subtitle {
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.5);
+}
+
+
+.admin-close {
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.admin-close:hover {
+
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* =============================== */
+/* SECTIONS */
+/* =============================== */
+
+.admin-section {
+
+    padding: 22px 24px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+}
+
+
+.admin-section-title {
+
+    margin-bottom: 5px;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.admin-description {
+
+    margin-bottom: 14px;
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.5);
+}
+
+
+/* =============================== */
+/* ROW */
+/* =============================== */
+
+.admin-row {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+/* =============================== */
+/* INPUT */
+/* =============================== */
+
+.admin-input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color: white;
+
+    font-size: 14px;
+
+    transition:
+    transform 0.15s,
+    background 0.15s;
+}
+
+
+.admin-input:focus {
+
+    border-color:
+        rgba(255, 255, 255, 0.35);
+
+    background:
+        rgba(255, 255, 255, 0.09);
+}
+
+
+.admin-input::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.35);
+}
+
+
+/* =============================== */
+/* SELECT */
+/* =============================== */
+
+select.admin-input option {
+
+    background: #171717;
+
+    color: white;
+}
+
+
+/* =============================== */
+/* ACTION BUTTON */
+/* =============================== */
+
+.admin-action-button {
+
+    padding:
+        0 18px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5f5f5f,
+            #303030
+        );
+
+    color: white;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+.admin-action-button:hover {
+
+    transform:
+        translateY(-1px);
+
+    filter:
+        brightness(1.2);
+}
+
+
+.admin-action-button:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* =============================== */
+/* STATUS */
+/* =============================== */
+
+.admin-status {
+
+    min-height: 18px;
+
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+}
+
+
+.admin-status.success {
+
+    color: #72ff9b;
+}
+
+
+.admin-status.error {
+
+    color: #ff7070;
+}
+
+
+/* =============================== */
+/* FOOTER */
+/* =============================== */
+
+.admin-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 16px 24px;
+
+    font-size: 11px;
+
+    color:
+        rgba(255, 255, 255, 0.4);
+}
+
+
+.admin-footer strong {
+
+    color:
+        rgba(255, 255, 255, 0.75);
+}
+
+
+/* =============================== */
+/* ANIMATIONS */
+/* =============================== */
+
+@keyframes adminFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes adminPanelIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.92)
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+/* =============================== */
+/* GITHUB LOGIN */
+/* =============================== */
+
+.github-login-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    background: #24292f;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+.github-login-button:hover {
+
+    transform:
+        translateY(-1px);
+
+    filter:
+        brightness(1.2);
+}
+
+
+/* =============================== */
+/* LOGGED IN */
+/* =============================== */
+
+.github-logged-in {
+
+    display: none;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.github-avatar {
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+}
+
+
+#githubUsername {
+
+    font-weight: 800;
+
+    font-size: 13px;
+}
+
+
+.github-logout-button {
+
+    padding: 7px 10px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+/* =============================== */
+/* UNREAL */
+/* =============================== */
+
+.rarity.unreal {
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #9f6cff,
+        0 0 50px #6b4cff,
+        0 0 90px #ffffff;
+}
+
+
+/* =============================== */
+/* UNREAL KANA */
+/* =============================== */
+
+.effect-unreal {
+    animation:
+        unrealKana 2.2s
+        cubic-bezier(0.15, 0.8, 0.2, 1);
+}
+
+
+@keyframes unrealKana {
+
+    0% {
+        transform: scale(0.03);
+        opacity: 0;
+        filter: brightness(0);
+    }
+
+    15% {
+        transform: scale(0.08);
+        opacity: 1;
+        filter: brightness(5);
+    }
+
+    35% {
+        transform: scale(0.18);
+        filter: brightness(8);
+    }
+
+    60% {
+        transform: scale(1.65);
+        filter: brightness(5);
+    }
+
+    72% {
+        transform: scale(0.9);
+    }
+
+    84% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+        opacity: 1;
+    }
+}
+
+
+/* =============================== */
+/* UNREAL EFFECT LAYER */
+/* =============================== */
+
+.unreal-effect {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20000;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* =============================== */
+/* FLASH */
+/* =============================== */
+
+.unreal-flash {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: white;
+
+    opacity: 0;
+
+    animation:
+        unrealFlash 0.65s ease-out;
+}
+
+
+@keyframes unrealFlash {
+
+    0% {
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.95;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =============================== */
+/* SHOCKWAVE */
+/* =============================== */
+
+.unreal-shockwave {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    border-radius: 50%;
+
+    border:
+        5px solid white;
+
+    box-shadow:
+        0 0 20px white,
+        0 0 50px #8c5cff,
+        0 0 100px #6b4cff;
+
+    animation:
+        unrealShockwave 1.2s
+        cubic-bezier(0.1, 0.8, 0.2, 1);
+}
+
+
+@keyframes unrealShockwave {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(35);
+
+        opacity: 0;
+    }
+}
+
+
+/* =============================== */
+/* PARTICLES */
+/* =============================== */
+
+.unreal-particle {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px #9f6cff,
+        0 0 30px #6b4cff;
+
+    animation:
+        unrealParticle
+        1.8s
+        cubic-bezier(0.1, 0.8, 0.2, 1)
+        forwards;
+}
+
+
+@keyframes unrealParticle {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    15% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.5);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(0);
+
+        opacity: 0;
+    }
+}
+
+
+/* =============================== */
+/* UNREAL TITLE */
+/* =============================== */
+
+.unreal-title {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.1);
+
+    color: white;
+
+    font-size:
+        clamp(70px, 15vw, 180px);
+
+    font-weight: 1000;
+
+    letter-spacing:
+        15px;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px white,
+        0 0 60px #9f6cff,
+        0 0 120px #6b4cff;
+
+    animation:
+        unrealTitle
+        1.3s
+        cubic-bezier(0.1, 1.5, 0.2, 1)
+        forwards;
+}
+
+
+@keyframes unrealTitle {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.05)
+            rotate(-5deg);
+
+        opacity: 0;
+    }
+
+    35% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.35)
+            rotate(2deg);
+
+        opacity: 1;
+    }
+
+    55% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.92);
+    }
+
+    75% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+        opacity: 1;
+    }
+}
+
+
+/* =============================== */
+/* FINAL BURST */
+/* =============================== */
+
+.unreal-final-burst {
+
+    position: absolute;
+
+    inset: 0;
+
+    animation:
+        finalBurst
+        0.9s
+        ease-out;
+}
+
+
+@keyframes finalBurst {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.unreal-final-particle {
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px white,
+        0 0 25px #9f6cff,
+        0 0 40px #6b4cff;
+
+    animation:
+        finalParticle
+        1s
+        ease-out
+        forwards;
+}
+
+
+@keyframes finalParticle {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(2);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(0);
+
+        opacity: 0;
+    }
+}
+
+
+/* =============================== */
+/* SCREEN SHAKE */
+/* =============================== */
+
+.unreal-shake {
+
+    animation:
+        unrealShake
+        0.9s
+        cubic-bezier(
+            0.36,
+            0.07,
+            0.19,
+            0.97
+        );
+}
+
+
+@keyframes unrealShake {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-8px, 6px);
+    }
+
+    20% {
+        transform: translate(8px, -7px);
+    }
+
+    30% {
+        transform: translate(-10px, -4px);
+    }
+
+    40% {
+        transform: translate(8px, 8px);
+    }
+
+    50% {
+        transform: translate(-6px, -8px);
+    }
+
+    60% {
+        transform: translate(7px, 4px);
+    }
+
+    70% {
+        transform: translate(-4px, 6px);
+    }
+
+    80% {
+        transform: translate(4px, -4px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+/* =============================== */
+/* UNREAL COLLECTION */
+/* =============================== */
+
+.collection-item.unreal {
+
+    box-shadow:
+        inset 0 0 40px
+        rgba(150,100,255,0.4),
+
+        0 0 20px
+        rgba(120,80,255,0.3);
+}
+
+
+.collection-item.unreal
+.collection-character {
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #9f6cff,
+        0 0 45px #6b4cff;
+}
+/* ===============================
+   NEW DISCOVERY POPUP
+   =============================== */
+
+.new-discovery-popup {
+    position: fixed;
+
+    top: 25%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0.4);
+
+    font-size: 64px;
+    font-weight: 900;
+
+    color: #ffd900;
+
+    text-shadow:
+        4px 4px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000;
+
+    z-index: 10000;
+
+    pointer-events: none;
+
+    animation:
+        newPopupIn 0.35s ease-out forwards,
+        newPopupOut 0.5s ease-in 1s forwards;
+}
+
+
+@keyframes newPopupIn {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%, -50%)
+            scale(0.4)
+            rotate(-8deg);
+    }
+
+    70% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.15)
+            rotate(3deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+
+@keyframes newPopupOut {
+
+    0% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%, -70%)
+            scale(1.2);
+    }
+}
+
+/* =========================
+   SETTINGS PANEL
+========================= */
+
+.settings-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(8px);
+}
+
+.settings-panel.show {
+    display: flex;
+
+    animation: settingsFadeIn 0.2s ease;
+}
+
+.settings-box {
+    position: relative;
+
+    width: min(420px, 100%);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #242424,
+            #151515
+        );
+
+    border: 2px solid #444;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.settings-box h2 {
+    margin-top: 0;
+
+    text-align: center;
+
+    font-size: 28px;
+}
+
+.settings-close-button {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #333;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.settings-close-button:hover {
+    background: #555;
+}
+
+
+/* =========================
+   SETTINGS SECTION
+========================= */
+
+.settings-section {
+    margin-top: 25px;
+}
+
+.settings-label-row {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   SFX SLIDER
+========================= */
+
+#sfxVolumeSlider,
+#musicVolumeSlider {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* =========================
+   ANIMATION TOGGLE
+========================= */
+
+.settings-toggle-button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #6b4cff;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        filter 0.15s ease;
+
+}
+
+.settings-toggle-button:hover {
+
+    background: #7d63ff;
+
+    transform: translateY(-1px);
+
+    filter: brightness(1.1);
+
+}
+
+.settings-toggle-button:active {
+
+    transform: scale(0.97);
+
+}
+
+/* =========================
+   SETTINGS BUTTON
+========================= */
+
+.settings-button {
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #333;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.settings-button:hover {
+    background: #444;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes settingsFadeIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.theme-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.theme-option {
+    padding: 12px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    background: #292929;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.theme-option:hover {
+    transform: translateY(-2px);
+    background: #3a3a3a;
+}
+
+.theme-option.active {
+    border-color: #6b4cff;
+    background: #4b3aa3;
+}
+
+.theme-option.locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+/* ===============================
+   RNGANA THEMES
+   =============================== */
+
+/* ---------- LIGHT ---------- */
+
+body.theme-light {
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff,
+            #e9e9f5 55%,
+            #d7d7e8
+        );
+
+    color: #151525;
+}
+
+body.theme-light header {
+    background: rgba(255,255,255,0.8);
+    border-bottom-color: rgba(0,0,0,0.08);
+}
+
+body.theme-light .game-card,
+body.theme-light .kanadex {
+    background: rgba(255,255,255,0.85);
+    border-color: rgba(0,0,0,0.08);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.12);
+}
+
+body.theme-light .kana-name,
+body.theme-light .kanadex-count,
+body.theme-light #rollCounter,
+body.theme-light .collection-name {
+    color: #666680;
+}
+
+body.theme-light .page-arrow {
+    background: rgba(0,0,0,0.06);
+    color: #222233;
+}
+
+body.theme-light .page-arrow:hover:not(:disabled) {
+    background: rgba(100,70,255,0.15);
+}
+
+body.theme-light .collection-item {
+    background: rgba(0,0,0,0.035);
+    border-color: rgba(0,0,0,0.08);
+}
+
+body.theme-light .collection-item:hover {
+    background: rgba(0,0,0,0.07);
+}
+
+
+/* ---------- DARK ---------- */
+
+body.theme-dark {
+    background:
+        radial-gradient(
+            circle at top,
+            #20204a,
+            #0d0d20 55%,
+            #080812
+        );
+
+    color: white;
+}
+
+
+/* ---------- RARITY THEME BASE ---------- */
+
+body[class*="theme-"] .game-card,
+body[class*="theme-"] .kanadex {
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* ===============================
+   COMMON THEME
+   =============================== */
+
+body.theme-common {
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0%,
+            #eeeeee 45%,
+            #dcdcdc 100%
+        );
+
+    color: #222;
+}
+
+/* Header */
+
+body.theme-common header {
+    background: rgba(255, 255, 255, 0.9);
+    color: #222;
+    border-bottom: 2px solid #cfcfcf;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Main game card */
+
+body.theme-common .game-card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #222;
+    border: 2px solid #d0d0d0;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Kana display */
+
+body.theme-common .kana-display {
+    background: #fafafa;
+    color: #222;
+    border: 2px solid #d2d2d2;
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.03);
+}
+
+/* Roll button */
+
+body.theme-common #rollButton {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #e4e4e4
+    );
+
+    color: #222;
+
+    border: 2px solid #bdbdbd;
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+body.theme-common #rollButton:hover {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #d8d8d8
+    );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+/* Kanadex */
+
+body.theme-common .kanadex {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #d0d0d0;
+    color: #222;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Collection items */
+
+body.theme-common .collection-item {
+    background: #f8f8f8;
+    color: #222;
+    border: 2px solid #d2d2d2;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
+}
+
+body.theme-common .collection-item:hover {
+    transform: translateY(-3px);
+
+    border-color: #aaa;
+
+    box-shadow:
+        0 7px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Settings */
+
+body.theme-common .settings-panel,
+body.theme-common .settings-box {
+    background: rgba(255, 255, 255, 0.96);
+    color: #222;
+    border-color: #d0d0d0;
+}
+
+/* Theme buttons */
+
+body.theme-common .theme-option {
+    background: #f5f5f5;
+    color: #222;
+    border-color: #c8c8c8;
+}
+
+body.theme-common .theme-option:hover {
+    background: #ffffff;
+    border-color: #999;
+}
+
+body.theme-common .theme-option.active {
+    background: #e2e2e2;
+    border-color: #888;
+    color: #111;
+}
+
+
+/* ===============================
+   UNCOMMON THEME
+   =============================== */
+
+body.theme-uncommon {
+    background:
+        radial-gradient(
+            circle at top,
+            #183d25 0%,
+            #0d2416 45%,
+            #06120a 100%
+        );
+
+    color: #eaffef;
+}
+
+/* Header */
+
+body.theme-uncommon header {
+    background: rgba(10, 40, 22, 0.92);
+    color: #eaffef;
+    border-bottom: 2px solid #2e9d50;
+
+    box-shadow:
+        0 3px 18px rgba(40, 180, 80, 0.15);
+}
+
+/* Game card */
+
+body.theme-uncommon .game-card {
+    background: rgba(18, 55, 31, 0.94);
+    color: #eaffef;
+
+    border: 2px solid #318b4b;
+
+    box-shadow:
+        0 10px 30px rgba(0, 80, 30, 0.35);
+}
+
+/* Kana display */
+
+body.theme-uncommon .kana-display {
+    background: rgba(8, 30, 16, 0.9);
+    color: #eaffef;
+
+    border: 2px solid #3bbf61;
+
+    box-shadow:
+        inset 0 0 20px rgba(40, 190, 80, 0.08),
+        0 0 12px rgba(40, 190, 80, 0.12);
+}
+
+/* Roll button */
+
+body.theme-uncommon #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #39b85c,
+            #197a38
+        );
+
+    color: white;
+
+    border: 2px solid #65d980;
+
+    box-shadow:
+        0 5px 15px rgba(30, 170, 70, 0.3);
+}
+
+body.theme-uncommon #rollButton:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #4bd96d,
+            #239947
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(40, 200, 80, 0.4);
+}
+
+/* Kanadex */
+
+body.theme-uncommon .kanadex {
+    background: rgba(14, 48, 27, 0.94);
+    color: #eaffef;
+
+    border: 2px solid #318b4b;
+
+    box-shadow:
+        0 8px 25px rgba(0, 80, 30, 0.25);
+}
+
+/* Collection items */
+
+body.theme-uncommon .collection-item {
+    background: rgba(18, 58, 32, 0.95);
+    color: #eaffef;
+
+    border: 2px solid #287c42;
+
+    box-shadow:
+        0 3px 10px rgba(0, 80, 30, 0.2);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease;
+}
+
+body.theme-uncommon .collection-item:hover {
+    transform: translateY(-3px);
+
+    border-color: #4ed96e;
+
+    box-shadow:
+        0 7px 18px rgba(40, 200, 80, 0.3);
+}
+
+/* Settings */
+
+body.theme-uncommon .settings-panel,
+body.theme-uncommon .settings-box {
+    background: rgba(13, 43, 24, 0.97);
+    color: #eaffef;
+
+    border-color: #318b4b;
+}
+
+/* Theme buttons */
+
+body.theme-uncommon .theme-option {
+    background: #12351e;
+    color: #eaffef;
+
+    border-color: #287c42;
+}
+
+body.theme-uncommon .theme-option:hover {
+    background: #1b4b2a;
+    border-color: #4ed96e;
+}
+
+body.theme-uncommon .theme-option.active {
+    background: #226637;
+    border-color: #65d980;
+
+    box-shadow:
+        0 0 10px rgba(60, 210, 100, 0.25);
+}
+/* ---------- RARE ---------- */
+
+body.theme-rare {
+    background:
+        radial-gradient(
+            circle at top,
+            #163b6b,
+            #08182f 55%,
+            #030914
+        );
+}
+
+body.theme-rare .game-card,
+body.theme-rare .kanadex {
+    background: rgba(10,35,65,0.84);
+    border-color: rgba(85,170,255,0.25);
+    box-shadow:
+        0 20px 60px rgba(50,140,255,0.15);
+}
+
+body.theme-rare #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #2675d9,
+            #55aaff
+        );
+}
+
+
+/* ---------- EPIC ---------- */
+
+body.theme-epic {
+    background:
+        radial-gradient(
+            circle at top,
+            #52206f,
+            #210b32 55%,
+            #0c0412
+        );
+}
+
+body.theme-epic .game-card,
+body.theme-epic .kanadex {
+    background: rgba(45,12,65,0.84);
+    border-color: rgba(192,96,255,0.25);
+    box-shadow:
+        0 20px 60px rgba(180,70,255,0.18);
+}
+
+body.theme-epic #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #873dcc,
+            #c060ff
+        );
+}
+
+
+/* ---------- LEGENDARY ---------- */
+
+body.theme-legendary {
+    background:
+        radial-gradient(
+            circle at top,
+            #6b5010,
+            #302306 55%,
+            #100b02
+        );
+}
+
+body.theme-legendary .game-card,
+body.theme-legendary .kanadex {
+    background: rgba(55,40,8,0.86);
+    border-color: rgba(255,212,59,0.3);
+    box-shadow:
+        0 20px 60px rgba(255,210,50,0.18);
+}
+
+body.theme-legendary #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #c99b15,
+            #ffd43b
+        );
+    color: #241900;
+}
+
+
+/* ---------- MYTHIC ---------- */
+
+body.theme-mythic {
+    background:
+        radial-gradient(
+            circle at top,
+            #702b18,
+            #351108 55%,
+            #120401
+        );
+}
+
+body.theme-mythic .game-card,
+body.theme-mythic .kanadex {
+    background: rgba(60,20,10,0.86);
+    border-color: rgba(255,140,50,0.3);
+    box-shadow:
+        0 20px 60px rgba(255,90,30,0.2);
+}
+
+body.theme-mythic #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #d94d19,
+            #ff8c32
+        );
+}
+
+
+/* ---------- DIVINE ---------- */
+
+body.theme-divine {
+    background:
+        radial-gradient(
+            circle at top,
+            #7a1818,
+            #350707 55%,
+            #120101
+        );
+}
+
+body.theme-divine .game-card,
+body.theme-divine .kanadex {
+    background: rgba(65,10,10,0.88);
+    border-color: rgba(255,69,69,0.35);
+    box-shadow:
+        0 20px 60px rgba(255,50,50,0.22);
+}
+
+body.theme-divine #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #d52b2b,
+            #ff4545
+        );
+}
+
+
+/* ---------- SECRET ---------- */
+
+body.theme-secret {
+    background:
+        linear-gradient(
+            135deg,
+            #2d0b3d,
+            #082e45,
+            #351008,
+            #082d20
+        );
+
+    background-size: 400% 400%;
+
+    animation:
+        secretThemeBackground 10s ease infinite;
+}
+
+@keyframes secretThemeBackground {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+body.theme-secret .game-card,
+body.theme-secret .kanadex {
+    background: rgba(20,10,35,0.72);
+
+    border-color:
+        rgba(255,255,255,0.2);
+
+    box-shadow:
+        0 0 35px rgba(255,80,255,0.12),
+        0 0 70px rgba(50,200,255,0.08);
+}
+
+body.theme-secret #rollButton {
+    background:
+        linear-gradient(
+            90deg,
+            #ff3333,
+            #ffcc00,
+            #33ff66,
+            #33ccff,
+            #aa55ff,
+            #ff33cc
+        );
+
+    background-size: 300% 100%;
+
+    animation:
+        secretButtonRainbow 3s linear infinite;
+}
+
+@keyframes secretButtonRainbow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+
+}
+
+/* ---------- SECRET EXTRA EFFECTS ---------- */
+
+body.theme-secret .game-card,
+body.theme-secret .kanadex,
+body.theme-secret button {
+    position: relative;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 255, 0.18),
+        0 0 30px rgba(0, 200, 255, 0.12),
+        0 0 50px rgba(255, 255, 0, 0.08);
+}
+
+
+/* Rainbow border */
+
+body.theme-secret .game-card,
+body.theme-secret .kanadex {
+    border: 2px solid transparent;
+
+    background:
+        linear-gradient(
+            rgba(20, 10, 35, 0.85),
+            rgba(20, 10, 35, 0.85)
+        ) padding-box,
+
+        linear-gradient(
+            90deg,
+            #ff3333,
+            #ffcc00,
+            #33ff66,
+            #33ccff,
+            #aa55ff,
+            #ff33cc,
+            #ff3333
+        ) border-box;
+
+    background-size:
+        100% 100%,
+        300% 100%;
+
+    animation:
+        secretBorder 5s linear infinite;
+}
+
+
+@keyframes secretBorder {
+
+    0% {
+        background-position:
+            0 0,
+            0% 50%;
+    }
+
+    100% {
+        background-position:
+            0 0,
+            300% 50%;
+    }
+
+}
+
+
+/* Rainbow text */
+
+body.theme-secret h1,
+body.theme-secret h2,
+body.theme-secret h3 {
+    background:
+        linear-gradient(
+            90deg,
+            #ff3333,
+            #ffcc00,
+            #33ff66,
+            #33ccff,
+            #aa55ff,
+            #ff33cc
+        );
+
+    background-size: 300% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        secretText 4s linear infinite;
+}
+
+
+@keyframes secretText {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+
+}
+
+
+/* Buttons */
+
+body.theme-secret button {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+body.theme-secret button:hover {
+    transform:
+        translateY(-2px)
+        scale(1.03);
+
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.35),
+        0 0 35px rgba(255, 0, 255, 0.25);
+}
+
+/* ---------- UNREAL ---------- */
+
+body.theme-unreal {
+    background:
+        radial-gradient(
+            circle at center,
+            #ffffff,
+            #aaa5c7 18%,
+            #393252 45%,
+            #0a0812 75%,
+            #020107
+        );
+
+    color: white;
+}
+
+body.theme-unreal .game-card,
+body.theme-unreal .kanadex {
+    background:
+        rgba(20,15,35,0.78);
+
+    border-color:
+        rgba(255,255,255,0.5);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,0.25),
+        0 0 60px rgba(120,80,255,0.25),
+        0 20px 80px rgba(0,0,0,0.5);
+}
+
+body.theme-unreal header {
+    background:
+        rgba(10,8,20,0.75);
+
+    border-bottom-color:
+        rgba(255,255,255,0.25);
+}
+
+body.theme-unreal #rollButton {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #bdaaff,
+            #ffffff
+        );
+
+    color: #171022;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.5),
+        0 0 50px rgba(130,80,255,0.3);
+}
+
+body.theme-unreal .game-card,
+body.theme-unreal .kanadex {
+    animation:
+        unrealThemeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes unrealThemeGlow {
+
+    from {
+        box-shadow:
+            0 0 20px rgba(255,255,255,0.2),
+            0 0 45px rgba(120,80,255,0.15),
+            0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    to {
+        box-shadow:
+            0 0 35px rgba(255,255,255,0.35),
+            0 0 80px rgba(120,80,255,0.3),
+            0 20px 70px rgba(0,0,0,0.45);
+    }
+
+}
+
+/* ---------- UNREAL EXTRA EFFECTS ---------- */
+
+body.theme-unreal {
+    background:
+        radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #d9e0ff 18%,
+            #8b94b8 45%,
+            #181a24 100%
+        );
+
+    background-size: 200% 200%;
+
+    animation:
+        unrealBackground 8s ease-in-out infinite;
+}
+
+@keyframes unrealBackground {
+
+    0% {
+        background-position: 50% 50%;
+    }
+
+    50% {
+        background-position: 100% 0%;
+    }
+
+    100% {
+        background-position: 50% 50%;
+    }
+
+}
+
+
+/* Unreal cards */
+
+body.theme-unreal .game-card,
+body.theme-unreal .kanadex {
+
+    background:
+        rgba(255,255,255,0.88);
+
+    border:
+        2px solid rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.8),
+        0 0 35px rgba(190,200,255,0.65),
+        0 0 70px rgba(255,255,255,0.4);
+
+    animation:
+        unrealGlow 3s ease-in-out infinite;
+}
+
+@keyframes unrealGlow {
+
+    0% {
+        box-shadow:
+            0 0 15px rgba(255,255,255,0.7),
+            0 0 35px rgba(190,200,255,0.5),
+            0 0 70px rgba(255,255,255,0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(255,255,255,1),
+            0 0 55px rgba(200,210,255,0.8),
+            0 0 100px rgba(255,255,255,0.6);
+    }
+
+    100% {
+        box-shadow:
+            0 0 15px rgba(255,255,255,0.7),
+            0 0 35px rgba(190,200,255,0.5),
+            0 0 70px rgba(255,255,255,0.3);
+    }
+
+}
+
+
+/* Unreal text */
+
+body.theme-unreal h1,
+body.theme-unreal h2,
+body.theme-unreal h3 {
+
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #cbd3ff,
+        0 0 30px #ffffff,
+        0 0 50px #aebaff;
+
+}
+
+
+/* Unreal roll button */
+
+body.theme-unreal #rollButton {
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #dce3ff,
+            #ffffff,
+            #bfc9ff,
+            #ffffff
+        );
+
+    background-size: 300% 100%;
+
+    color: #111;
+
+    border:
+        2px solid white;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px rgba(200,210,255,0.8),
+        0 0 60px rgba(255,255,255,0.5);
+
+    animation:
+        unrealButton 2.5s linear infinite;
+}
+
+@keyframes unrealButton {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+
+}
+
+
+/* All buttons */
+
+body.theme-unreal button {
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+body.theme-unreal button:hover {
+
+    transform:
+        translateY(-2px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 15px white,
+        0 0 35px rgba(200,210,255,0.8),
+        0 0 60px rgba(255,255,255,0.5);
+
+}
+
+/* ===============================
+   THEME SELECTOR
+   =============================== */
+
+.theme-selector {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.theme-option {
+    position: relative;
+}
+
+.theme-option.locked {
+    filter: grayscale(0.7);
+}
+
+.theme-option.active {
+    box-shadow:
+        0 0 15px rgba(107,76,255,0.35);
+}
+
+
+/* ===============================
+   SMOOTH THEME TRANSITION
+   =============================== */
+
+body,
+header,
+.game-card,
+.kanadex,
+.collection-item,
+.page-arrow,
+.settings-box,
+.theme-option,
+.settings-button,
+.settings-toggle-button,
+#rollButton {
+    transition:
+        background 0.35s ease,
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+/* ===============================
+   ADMIN THEME TOGGLE
+   =============================== */
+
+.admin-theme-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    border: 2px solid #444;
+    border-radius: 10px;
+
+    background: #292929;
+    color: white;
+
+    font-weight: bold;
+}
+
+/* Toggle */
+
+.admin-theme-control .switch {
+    position: relative;
+
+    display: inline-block;
+
+    width: 46px;
+    height: 24px;
+}
+
+.admin-theme-control .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.admin-theme-control .slider {
+    position: absolute;
+
+    inset: 0;
+
+    cursor: pointer;
+
+    background: #555;
+
+    border-radius: 24px;
+
+    transition: 0.2s;
+}
+
+.admin-theme-control .slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    left: 3px;
+    top: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transition: 0.2s;
+}
+
+.admin-theme-control input:checked + .slider {
+    background: #4caf50;
+}
+
+.admin-theme-control input:checked + .slider::before {
+    transform: translateX(22px);
+}
